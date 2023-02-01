@@ -1,4 +1,4 @@
-# goose [![Goose CI](https://github.com/pressly/goose/actions/workflows/ci.yml/badge.svg)](https://github.com/pressly/goose/actions/workflows/ci.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/pressly/goose/v3.svg)](https://pkg.go.dev/github.com/pressly/goose/v3)
+# goose [![Goose CI](https://github.com/pressly/goose/actions/workflows/ci.yml/badge.svg)](https://github.com/pressly/goose/actions/workflows/ci.yml) [![Go Reference](https://pkg.go.dev/badge/github.com/piiano/goose/v3.svg)](https://pkg.go.dev/github.com/piiano/goose/v3)
 
 <p align="center">
   <img src="assets/goose_logo.png" width="125"">
@@ -34,7 +34,7 @@ Goose supports [embedding SQL migrations](#embedded-sql-migrations), which means
 
 # Install
 
-    $ go install github.com/pressly/goose/v3/cmd/goose@latest
+    $ go install github.com/piiano/goose/v3/cmd/goose@latest
 
 This will install the `goose` binary to your `$GOPATH/bin` directory.
 
@@ -273,7 +273,7 @@ import (
     "database/sql"
     "embed"
 
-    "github.com/pressly/goose/v3"
+    "github.com/piiano/goose/v3"
 )
 
 //go:embed migrations/*.sql
@@ -314,7 +314,7 @@ package migrations
 import (
 	"database/sql"
 
-	"github.com/pressly/goose/v3"
+	"github.com/piiano/goose/v3"
 )
 
 func init() {

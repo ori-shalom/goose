@@ -11,8 +11,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pressly/goose/v3/internal/check"
 	_ "modernc.org/sqlite"
+
+	"github.com/piiano/goose/v3/internal/check"
 )
 
 func TestDefaultBinary(t *testing.T) {

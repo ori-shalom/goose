@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pressly/goose/v3/internal/sqlparser"
+	"github.com/piiano/goose/v3/internal/sqlparser"
 )
 
 // MigrationRecord struct.

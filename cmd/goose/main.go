@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"text/template"
 
-	"github.com/pressly/goose/v3"
-	"github.com/pressly/goose/v3/internal/cfg"
+	"github.com/piiano/goose/v3"
+	"github.com/piiano/goose/v3/internal/cfg"
 )
 
 var (
