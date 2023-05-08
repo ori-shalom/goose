@@ -367,7 +367,7 @@ func EnsureDBVersion(db *sql.DB) (int64, error) {
 func EnsureDBVersionContext(ctx context.Context, db *sql.DB) (int64, error) {
 	dbMigrations, err := store.ListMigrations(ctx, db, TableName())
 	if err != nil {
-		return 0, createVersionTable(ctx, db)
+		return 0, CreateVersionTable(ctx, db)
 	}
 	// The most recent record for each migration specifies
 	// whether it has been applied or rolled back.
@@ -398,9 +398,9 @@ func EnsureDBVersionContext(ctx context.Context, db *sql.DB) (int64, error) {
 	return 0, ErrNoNextVersion
 }
 
-// createVersionTable creates the db version table and inserts the
+// CreateVersionTable creates the db version table and inserts the
 // initial 0 value into it.
-func createVersionTable(ctx context.Context, db *sql.DB) error {
+func CreateVersionTable(ctx context.Context, db *sql.DB) error {
 	txn, err := db.BeginTx(ctx, nil)
 	if err != nil {
 		return err
