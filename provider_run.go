@@ -149,6 +149,13 @@ func (p *Provider) runMigrations(
 				Err:     err,
 			}
 		}
+
+		// after each migration, we deallocate the statement cache so if the migration changed the schema of the database,
+		// which is very likely, the next migration will not fail on statement cache error.
+		if err := p.cfg.deallocateStatementCache(ctx, conn); err != nil {
+			return nil, fmt.Errorf("failed to deallocate statement cache for migration %d: %w", m.Version, err)
+		}
+
 		result.Duration = time.Since(start)
 		results = append(results, result)
 		p.printf("%s", result)
