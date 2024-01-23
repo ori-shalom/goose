@@ -1,6 +1,8 @@
 package goose
 
 import (
+	"context"
+	"database/sql"
 	"errors"
 	"fmt"
 
@@ -17,6 +19,22 @@ const (
 // ProviderOption is a configuration option for a goose goose.
 type ProviderOption interface {
 	apply(*config) error
+}
+
+// WithLogger sets the logger to use for the provider.
+func WithLogger(logger Logger) ProviderOption {
+	return configFunc(func(c *config) error {
+		c.logger = logger
+		return nil
+	})
+}
+
+// WithDeallocateStatementCache allows the provider to deallocate statement cache for the db connection after each migration.
+func WithDeallocateStatementCache(f func(context.Context, *sql.Conn) error) ProviderOption {
+	return configFunc(func(c *config) error {
+		c.deallocateStatementCache = f
+		return nil
+	})
 }
 
 // WithStore configures the provider with a custom [database.Store] implementation.
@@ -185,7 +203,9 @@ type config struct {
 	allowMissing          bool
 	disableGlobalRegistry bool
 
-	// Let's not expose the Logger just yet. Ideally we consolidate on the std lib slog package
+	deallocateStatementCache func(context.Context, *sql.Conn) error
+
+	// Ideally we consolidate on the std lib slog package
 	// added in go1.21 and then expose that (if that's even necessary). For now, just use the std
 	// lib log package.
 	logger Logger

@@ -60,10 +60,11 @@ func NewProvider(dialect Dialect, db *sql.DB, fsys fs.FS, opts ...ProviderOption
 		fsys = noopFS{}
 	}
 	cfg := config{
-		registered:      make(map[int64]*Migration),
-		excludePaths:    make(map[string]bool),
-		excludeVersions: make(map[int64]bool),
-		logger:          &stdLogger{},
+		registered:               make(map[int64]*Migration),
+		excludePaths:             make(map[string]bool),
+		excludeVersions:          make(map[int64]bool),
+		logger:                   &stdLogger{},
+		deallocateStatementCache: func(_ context.Context, _ *sql.Conn) error { return nil },
 	}
 	for _, opt := range opts {
 		if err := opt.apply(&cfg); err != nil {
