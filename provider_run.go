@@ -10,10 +10,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/piiano/goose/v3/database"
-	"github.com/piiano/goose/v3/internal/sqlparser"
 	"github.com/sethvargo/go-retry"
 	"go.uber.org/multierr"
+
+	"github.com/piiano/goose/v3/database"
+	"github.com/piiano/goose/v3/internal/sqlparser"
 )
 
 var (
@@ -259,9 +260,7 @@ func (p *Provider) initialize(ctx context.Context, useSessionLocker bool) (*sql.
 			p.mu.Unlock()
 			// Use a detached context to unlock the session. This is because the context passed to
 			// SessionLock may have been canceled, and we don't want to cancel the unlock.
-			//
-			// TODO(mf): use context.WithoutCancel added in go1.21
-			detachedCtx := context.Background()
+			detachedCtx := context.WithoutCancel(ctx)
 			return multierr.Append(l.SessionUnlock(detachedCtx, conn), conn.Close())
 		}
 	}
