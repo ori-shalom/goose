@@ -7,10 +7,11 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pressly/goose/v3/database"
-	"github.com/pressly/goose/v3/internal/check"
 	"go.uber.org/multierr"
 	"modernc.org/sqlite"
+
+	"github.com/piiano/goose/v3/database"
+	"github.com/piiano/goose/v3/internal/check"
 )
 
 // The goal of this test is to verify the database store package works as expected. This test is not

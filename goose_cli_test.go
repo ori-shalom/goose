@@ -9,8 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pressly/goose/v3/internal/check"
 	_ "modernc.org/sqlite"
+
+	"github.com/piiano/goose/v3/internal/check"
 )
 
 const (
@@ -60,7 +61,7 @@ func TestLiteBinary(t *testing.T) {
 		}
 	})
 	t.Run("gh_issue_532", func(t *testing.T) {
-		// https://github.com/pressly/goose/issues/532
+		// https://github.com/piiano/goose/issues/532
 		t.Parallel()
 		dir := t.TempDir()
 		total := countSQLFiles(t, "testdata/migrations")
@@ -74,7 +75,7 @@ func TestLiteBinary(t *testing.T) {
 		check.Contains(t, out, "goose: version "+strconv.Itoa(total))
 	})
 	t.Run("gh_issue_293", func(t *testing.T) {
-		// https://github.com/pressly/goose/issues/293
+		// https://github.com/piiano/goose/issues/293
 		t.Parallel()
 		dir := t.TempDir()
 		total := countSQLFiles(t, "testdata/migrations")
@@ -97,7 +98,7 @@ func TestLiteBinary(t *testing.T) {
 		}
 	})
 	t.Run("gh_issue_336", func(t *testing.T) {
-		// https://github.com/pressly/goose/issues/336
+		// https://github.com/piiano/goose/issues/336
 		t.Parallel()
 		dir := t.TempDir()
 		_, err := cli.run("-dir="+dir, "sqlite3", filepath.Join(dir, "sql.db"), "up")

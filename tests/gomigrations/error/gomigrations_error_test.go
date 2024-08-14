@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pressly/goose/v3"
-	"github.com/pressly/goose/v3/internal/check"
-	_ "github.com/pressly/goose/v3/tests/gomigrations/error/testdata"
+	"github.com/piiano/goose/v3"
+	"github.com/piiano/goose/v3/internal/check"
+	_ "github.com/piiano/goose/v3/tests/gomigrations/error/testdata"
 	_ "modernc.org/sqlite"
 )
 

@@ -14,12 +14,13 @@ import (
 	"testing/fstest"
 	"time"
 
-	"github.com/pressly/goose/v3"
-	"github.com/pressly/goose/v3/internal/check"
-	"github.com/pressly/goose/v3/internal/testing/testdb"
-	"github.com/pressly/goose/v3/lock"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sync/errgroup"
+
+	"github.com/piiano/goose/v3"
+	"github.com/piiano/goose/v3/internal/check"
+	"github.com/piiano/goose/v3/internal/testing/testdb"
+	"github.com/piiano/goose/v3/lock"
 )
 
 func TestPostgresSessionLocker(t *testing.T) {
@@ -519,7 +520,7 @@ SELECT pg_sleep_for('4 seconds');
 	// A new provider is running in the background with a session lock to simulate a long running
 	// migration. If older instances come up, they should not have any pending migrations and not be
 	// affected by the long running migration. Test the following scenario:
-	// https://github.com/pressly/goose/pull/507#discussion_r1266498077
+	// https://github.com/piiano/goose/pull/507#discussion_r1266498077
 	g.Go(func() error {
 		_, err := newProvider.Up(context.Background())
 		return err

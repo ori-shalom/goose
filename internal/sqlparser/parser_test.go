@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/pressly/goose/v3/internal/check"
+	"github.com/piiano/goose/v3/internal/check"
 )
 
 var (
@@ -552,20 +552,20 @@ func Test_extractAnnotation(t *testing.T) {
 			wantErr: check.HasError,
 		},
 		{
-			name:    "statement with spaces and Uppercase",
-			input:   "-- +goose   UP 	",
+			name: "statement with spaces and Uppercase",
+			input: "-- +goose   UP 	",
 			want:    annotationUp,
 			wantErr: check.NoError,
 		},
 		{
-			name:    "statement with leading whitespace - error",
-			input:   " -- +goose   UP 	",
+			name: "statement with leading whitespace - error",
+			input: " -- +goose   UP 	",
 			want:    "",
 			wantErr: check.HasError,
 		},
 		{
-			name:    "statement with leading \t - error",
-			input:   "\t-- +goose   UP 	",
+			name: "statement with leading \t - error",
+			input: "\t-- +goose   UP 	",
 			want:    "",
 			wantErr: check.HasError,
 		},

@@ -52,8 +52,8 @@ type InsertRequest struct {
 
 	// TODO(mf): in the future, we maybe want to expand this struct so implementors can store
 	// additional information. See the following issues for more information:
-	//  - https://github.com/pressly/goose/issues/422
-	//  - https://github.com/pressly/goose/issues/288
+	//  - https://github.com/piiano/goose/issues/422
+	//  - https://github.com/piiano/goose/issues/288
 }
 
 type GetMigrationResult struct {

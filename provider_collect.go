@@ -176,7 +176,7 @@ func merge(sources *fileSources, registerd map[int64]*Migration) ([]*Migration, 
 
 func unregisteredError(unregistered []string) error {
 	const (
-		hintURL = "https://github.com/pressly/goose/tree/master/examples/go-migrations"
+		hintURL = "https://github.com/piiano/goose/tree/master/examples/go-migrations"
 	)
 	f := "file"
 	if len(unregistered) > 1 {
