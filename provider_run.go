@@ -295,9 +295,7 @@ func (p *Provider) ensureVersionTable(
 	// retry this operation a few times. Best case, the table is created by one instance and all the
 	// other instances see that change immediately. Worst case, all instances try to create the
 	// table at the same time, but only one will succeed and the others will retry.
-	p.versionTableOnce.Do(func() {
-		retErr = p.tryEnsureVersionTable(ctx, conn)
-	})
+	retErr = p.tryEnsureVersionTable(ctx, conn)
 	return retErr
 }
 
