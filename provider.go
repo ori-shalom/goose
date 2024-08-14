@@ -11,10 +11,11 @@ import (
 	"strings"
 	"sync"
 
+	"go.uber.org/multierr"
+
 	"github.com/piiano/goose/v3/database"
 	"github.com/piiano/goose/v3/internal/gooseutil"
 	"github.com/piiano/goose/v3/internal/sqlparser"
-	"go.uber.org/multierr"
 )
 
 // Provider is a goose migration provider.
@@ -23,9 +24,8 @@ type Provider struct {
 	// database.
 	mu sync.Mutex
 
-	db               *sql.DB
-	store            database.Store
-	versionTableOnce sync.Once
+	db    *sql.DB
+	store database.Store
 
 	fsys fs.FS
 	cfg  config
